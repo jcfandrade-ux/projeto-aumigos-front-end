@@ -1,0 +1,304 @@
+/**
+ * style.css
+ * CSS Unificado para ONG Aumigos! (SPA)
+ * Contém estilos base e específicos para index, projetos e cadastro.
+ */
+
+/* ========================================================================= */
+/* 1. ESTILOS GLOBAIS (BASE) - Aplicáveis a todas as páginas                  */
+/* ========================================================================= */
+
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('../fonts/LEMONMILK-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Variáveis para Design System */
+:root {
+  --cor-primaria: #364872;
+  --cor-secundaria: #2a9d8f;
+  --cor-terciaria: #f5f5f5;
+  --cor-quaternaria: #e0e0e0;
+  --cor-quinta: #333333;
+  --cor-fundo: #ffffff;
+  
+  /* Variáveis de validação adicionadas para consistência */
+  --cor-error: #e63946;
+  --cor-success: #2a9d8f;
+  --cor-text-secondary: #626c7c;
+
+  --fonte-lemonmilk: 'Lemon Milk', sans-serif;
+  --fonte-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --fonte-xs: 0.75rem;
+  --fonte-sm: 0.875rem;
+  --fonte-md: 1rem;
+  --fonte-lg: 1.25rem;
+  --fonte-xl: 1.5rem;
+
+  --espaco-4: 4px; 
+  --espaco-8: 8px;
+  --espaco-16: 16px;
+  --espaco-24: 24px;
+  --espaco-32: 32px;
+  --espaco-48: 48px;
+  --espaco-64: 64px;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--fonte-md);
+  background-color: var(--cor-fundo);
+  color: var(--cor-quinta);
+  line-height: 1.6;
+  padding: var(--espaco-24);
+  position: relative;
+}
+
+/* Marcas de pata laterais - padrão vertical */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 80px;
+  height: 100vh;
+  background-image: url('../images/marca-pata.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 60px auto;
+  opacity: 0.3;
+  filter: brightness(0.6);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título principal */
+h1 {
+  font-family: var(--fonte-lemonmilk);
+  color: var(--cor-primaria);
+  text-align: center;
+  font-weight: 500;
+  font-size: 2.5rem;
+  margin-bottom: var(--espaco-24);
+}
+
+/* Logo centralizada */
+header img {
+  display: block;
+  margin: 0 auto var(--espaco-32);
+  max-width: 220px;
+  width: 100%;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--cor-quaternaria);
+  font-size: var(--fonte-sm);
+  padding: var(--espaco-24) 0;
+  margin-top: var(--espaco-32);
+  background-color: var(--cor-fundo);
+}
+
+
+/* ========================================================================= */
+/* 2. ESTILOS ESPECÍFICOS DA PÁGINA INDEX E PROJETOS                         */
+/* ========================================================================= */
+
+/* Container de seção (Usado em Index e Projetos) */
+main section {
+  max-width: 900px;
+  margin: 0 auto var(--espaco-48);
+}
+
+main section h2 {
+  font-size: var(--fonte-xl);
+  font-weight: 700;
+  margin-bottom: var(--espaco-16);
+  color: var(--cor-secundaria);
+}
+
+main section p,
+main section ul {
+  font-size: var(--fonte-md);
+  margin-bottom: var(--espaco-16);
+}
+
+main section ul li {
+  margin-bottom: var(--espaco-8);
+}
+
+/* Imagens institucionais (Usadas em Index) */
+main section img {
+  display: block;
+  margin: var(--espaco-24) auto;
+  max-width: 320px; /* Estilo do Index */
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+}
+
+/* Estilos Adicionais do Projetos */
+main section h3 {
+  font-size: var(--fonte-lg);
+  margin-top: var(--espaco-24);
+  margin-bottom: var(--espaco-8);
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+/* Estilos para Vídeos do Projetos */
+main section video {
+  display: block;
+  margin: var(--espaco-24) auto;
+  max-width: 400px; /* Mais largo que a imagem padrão */
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+}
+
+
+/* ========================================================================= */
+/* 3. ESTILOS ESPECÍFICOS DA PÁGINA CADASTRO (FORMULÁRIO)                    */
+/* ========================================================================= */
+
+/* Imagem do cachorro com óculos (Cadastro) */
+main > img {
+  display: block;
+  margin: 0 auto var(--espaco-24);
+  max-width: 320px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+}
+
+/* Container do Formulário */
+form[data-validate-form] {
+  max-width: 600px;
+  margin: 0 auto var(--espaco-32);
+  background: var(--cor-terciaria);
+  padding: var(--espaco-24);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+fieldset {
+  border: 1px solid var(--cor-quaternaria);
+  border-radius: 8px;
+  margin-bottom: var(--espaco-24);
+  padding: var(--espaco-16);
+  min-width: 0;
+}
+
+legend {
+  font-size: var(--fonte-lg);
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  padding: 0 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: var(--espaco-8);
+  font-weight: 600;
+  color: var(--cor-quinta);
+  font-size: var(--fonte-md);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: var(--espaco-8);
+  border: 1px solid var(--cor-quaternaria);
+  border-radius: 6px;
+  font-size: var(--fonte-md);
+  margin-bottom: var(--espaco-16);
+  transition: border-color 0.3s ease;
+  font-family: var(--fonte-base);
+  background: #fff;
+  box-sizing: border-box;
+  display: block;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: var(--cor-primaria);
+  color: white;
+  font-weight: 700;
+  font-size: var(--fonte-md);
+  border: none;
+  padding: var(--espaco-8) var(--espaco-24);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: var(--espaco-16);
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: var(--cor-secundaria);
+  outline: none;
+}
+
+
+/* ========================================================================= */
+/* 4. ESTILOS RESPONSIVOS (@MEDIA)                                           */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+  /* Estilos Globais */
+  body {
+    padding: var(--espaco-16);
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  body::before, body::after {
+    width: 40px;
+    background-size: 30px auto;
+  }
+
+  /* Estilos Específicos de Conteúdo (Index/Projetos) */
+  main section {
+    padding: 0 var(--espaco-16);
+  }
+  main section img, 
+  main section video,
+  main > img /* Imagem do Cadastro */ {
+    max-width: 220px;
+  }
+
+  /* Estilos Específicos de Formulário (Cadastro) */
+  form[data-validate-form] {
+    padding: var(--espaco-16);
+  }
+}
