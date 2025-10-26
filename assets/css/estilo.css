@@ -1,5 +1,5 @@
 /**
- * style.css
+ * estilo.css
  * CSS Unificado para ONG Aumigos! (SPA)
  * Contém estilos base e específicos para index, projetos e cadastro.
  */
@@ -301,4 +301,48 @@ button[type="submit"]:focus {
   form[data-validate-form] {
     padding: var(--espaco-16);
   }
+.nav {
+  position: relative;
+}
+.menu-toggle {
+  display: none;
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-primaria, #364872);
+}
+.nav-list {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+}
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 2;
+  }
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 52px;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  }
+  .nav-list.open {
+    display: flex;
+  }
+  .nav-list li {
+    margin: 12px 0;
+    text-align: center;
+  }
+}
 }
