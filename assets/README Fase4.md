@@ -14,6 +14,37 @@ Este documento finaliza o projeto mostrando a consolidação das melhores práti
 - Deploy público acessível.
 
 ---
+## Estrutura do Projeto
+
+```
+Projeto - Aumigos
+├── index.html               ← Página principal na raiz
+├── assets/
+│   ├── HTML/
+│   │   ├── projetos.html    ← Templates injetados pelo SPA
+│   │   └── cadastro.html
+│   ├── css/
+│   │   ├── estilo.css
+│   │   ├── componentes.css
+│   │   └── spa-validation.css
+│   ├── images/
+│   │   ├── logo-ong-aumigos.png
+│   │   ├── equipe.jpg
+│   │   ├── projeto-patas.jpg
+│   │   ├── projeto-educacao.jpg
+│   │   ├── cachorro-oculos.jpg
+│   │   └── marca-pata.png
+│   └── js/
+│       ├── main.js
+│       ├── spa.js
+│       ├── templates.js
+│       └── form-validation.js
+└── README.md
+
+
+```
+
+---
 
 ## Controle de Versão (Git/GitHub)
 
@@ -24,9 +55,7 @@ Este documento finaliza o projeto mostrando a consolidação das melhores práti
 - Histórico de commits limpo e semântico, como:  
   - `feat: adiciona navegação SPA`  
   - `fix: corrige contraste dos botões`  
-- Utilização de Pull Requests para revisão e documentação das mudanças  
-- Issues e milestones criando um fluxo contínuo de acompanhamento do projeto  
-- Releases com versionamento semântico marcando as entregas das fases
+- Pull Requests, Issues e Releases para revisão, acompanhamento e marcação das fases do projeto.
 
 ---
 
@@ -60,18 +89,21 @@ Este documento finaliza o projeto mostrando a consolidação das melhores práti
 ## Como rodar localmente
 
 1. Clone o repositório:  
-git clone [\[URL_DO_REPOSITÓRIO\]](https://github.com/jcfandrade-ux/projeto-aumigos-front-end)
+git clone https://github.com/jcfandrade-ux/projeto-aumigos-front-end.git
 cd projeto-aumigos-front-end
 
 2. Use o VSCode + extensão Live Server para abrir `assets/HTML/index.html`
 3. Navegue usando o menu para garantir o funcionamento correto do SPA
 4. Teste formulários, navegação e layout em dispositivos variados
+🔹 Observação: Não abra diretamente os arquivos da pasta assets/HTML — eles são carregados pelo SPA.
 
 ---
 
 ## Considerações Finais
 
-Este projeto é a consolidação de um desenvolvimento completo para a ONG Aumigos, corrigindo aspectos técnicos e visuais nas fases 1 a 3 e integrando práticas modernas com controle de versão, análise de acessibilidade e deploy público.
+*Projeto consolidou fases 1 a 3, corrigindo aspectos técnicos e visuais.
+
+*Integra práticas modernas de desenvolvimento, controle de versão, acessibilidade e deploy público.
 
 ---
 ## Controle de Versão e Fluxo de Trabalho no GitHub
