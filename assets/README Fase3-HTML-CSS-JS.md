@@ -42,6 +42,7 @@ Projeto - Aumigos
 │   └── README Fase3-HTML-CSS-JS.md
 └── README.md
 
+🔹 Observação: O index.html está na raiz para funcionar corretamente com o GitHub Pages. As outras páginas são carregadas pelo SPA a partir da pasta assets/HTML/.
 ```
 
 ## Aplicação de JavaScript

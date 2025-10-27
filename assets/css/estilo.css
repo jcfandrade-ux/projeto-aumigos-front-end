@@ -5,7 +5,7 @@
  */
 
 /* ========================================================================= */
-/* 1. ESTILOS GLOBAIS (BASE) - Aplicáveis a todas as páginas                  */
+/* 1. ESTILOS GLOBAIS (BASE) - Aplicáveis a todas as páginas                 */
 /* ========================================================================= */
 
 @font-face {
@@ -15,7 +15,7 @@
   font-style: normal;
 }
 
-/* Variáveis para Design System */
+/* Variáveis de Design System */
 :root {
   --cor-primaria: #364872;
   --cor-secundaria: #2a9d8f;
@@ -23,8 +23,7 @@
   --cor-quaternaria: #e0e0e0;
   --cor-quinta: #333333;
   --cor-fundo: #ffffff;
-  
-  /* Variáveis de validação adicionadas para consistência */
+
   --cor-error: #e63946;
   --cor-success: #2a9d8f;
   --cor-text-secondary: #626c7c;
@@ -37,7 +36,7 @@
   --fonte-lg: 1.25rem;
   --fonte-xl: 1.5rem;
 
-  --espaco-4: 4px; 
+  --espaco-4: 4px;
   --espaco-8: 8px;
   --espaco-16: 16px;
   --espaco-24: 24px;
@@ -63,7 +62,7 @@ body {
   position: relative;
 }
 
-/* Marcas de pata laterais - padrão vertical */
+/* Marcas de pata laterais */
 body::before, body::after {
   content: "";
   position: fixed;
@@ -99,7 +98,7 @@ h1 {
 }
 
 /* Logo centralizada */
-header img {
+header img.logo {
   display: block;
   margin: 0 auto var(--espaco-32);
   max-width: 220px;
@@ -116,12 +115,61 @@ footer {
   background-color: var(--cor-fundo);
 }
 
+/* ========================================================================= */
+/* 2. ESTILOS DE NAVEGAÇÃO (HEADER)                                         */
+/* ========================================================================= */
+
+.nav {
+  position: relative;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: var(--espaco-24);
+  list-style: none;
+  padding: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  padding: var(--espaco-8) var(--espaco-16);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-list li a:hover,
+.nav-list li a:focus {
+  background-color: var(--cor-primaria);
+  color: white;
+  outline: none;
+}
+
+.nav-list li a.active {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
+/* Menu hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-secundaria);
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 200;
+}
 
 /* ========================================================================= */
-/* 2. ESTILOS ESPECÍFICOS DA PÁGINA INDEX E PROJETOS                         */
+/* 3. ESTILOS PARA SEÇÕES (INDEX / PROJETOS)                                */
 /* ========================================================================= */
 
-/* Container de seção (Usado em Index e Projetos) */
 main section {
   max-width: 900px;
   margin: 0 auto var(--espaco-48);
@@ -144,17 +192,18 @@ main section ul li {
   margin-bottom: var(--espaco-8);
 }
 
-/* Imagens institucionais (Usadas em Index) */
-main section img {
+/* Imagens e vídeos institucionais */
+main section img,
+main section video,
+main > img {
   display: block;
   margin: var(--espaco-24) auto;
-  max-width: 320px; /* Estilo do Index */
+  max-width: 320px;
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.10);
 }
 
-/* Estilos Adicionais do Projetos */
 main section h3 {
   font-size: var(--fonte-lg);
   margin-top: var(--espaco-24);
@@ -163,32 +212,10 @@ main section h3 {
   font-weight: 600;
 }
 
-/* Estilos para Vídeos do Projetos */
-main section video {
-  display: block;
-  margin: var(--espaco-24) auto;
-  max-width: 400px; /* Mais largo que a imagem padrão */
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
-}
-
-
 /* ========================================================================= */
-/* 3. ESTILOS ESPECÍFICOS DA PÁGINA CADASTRO (FORMULÁRIO)                    */
+/* 4. ESTILOS DE FORMULÁRIO (CADASTRO)                                       */
 /* ========================================================================= */
 
-/* Imagem do cachorro com óculos (Cadastro) */
-main > img {
-  display: block;
-  margin: 0 auto var(--espaco-24);
-  max-width: 320px;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
-}
-
-/* Container do Formulário */
 form[data-validate-form] {
   max-width: 600px;
   margin: 0 auto var(--espaco-32);
@@ -203,7 +230,6 @@ fieldset {
   border-radius: 8px;
   margin-bottom: var(--espaco-24);
   padding: var(--espaco-16);
-  min-width: 0;
 }
 
 legend {
@@ -235,8 +261,8 @@ select {
   transition: border-color 0.3s ease;
   font-family: var(--fonte-base);
   background: #fff;
-  box-sizing: border-box;
   display: block;
+  box-sizing: border-box;
 }
 
 input:focus,
@@ -269,80 +295,65 @@ button[type="submit"]:focus {
   outline: none;
 }
 
-
 /* ========================================================================= */
-/* 4. ESTILOS RESPONSIVOS (@MEDIA)                                           */
+/* 5. RESPONSIVIDADE                                                         */
 /* ========================================================================= */
 
 @media (max-width: 768px) {
-  /* Estilos Globais */
+
   body {
     padding: var(--espaco-16);
   }
+
   h1 {
     font-size: 1.5rem;
   }
+
   body::before, body::after {
     width: 40px;
     background-size: 30px auto;
   }
 
-  /* Estilos Específicos de Conteúdo (Index/Projetos) */
   main section {
     padding: 0 var(--espaco-16);
   }
+
   main section img, 
   main section video,
-  main > img /* Imagem do Cadastro */ {
+  main > img {
     max-width: 220px;
   }
 
-  /* Estilos Específicos de Formulário (Cadastro) */
   form[data-validate-form] {
     padding: var(--espaco-16);
   }
-.nav {
-  position: relative;
-}
-.menu-toggle {
-  display: none;
-  font-size: 2.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--cor-primaria, #364872);
-}
-.nav-list {
-  display: flex;
-  gap: 18px;
-  list-style: none;
-  padding: 0;
-}
-@media (max-width: 700px) {
+
+  /* Menu mobile */
   .menu-toggle {
     display: block;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    z-index: 2;
   }
+
   .nav-list {
     display: none;
     flex-direction: column;
-    background: #fff;
     position: absolute;
-    width: 100%;
+    top: 60px;
     left: 0;
-    top: 52px;
-    border-bottom: 1px solid #eee;
+    width: 100%;
+    background: var(--cor-fundo);
+    border-bottom: 1px solid var(--cor-quaternaria);
     box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    padding: 16px 0;
+    z-index: 201;
   }
+
   .nav-list.open {
     display: flex;
   }
+
   .nav-list li {
     margin: 12px 0;
     text-align: center;
   }
-}
+
 }

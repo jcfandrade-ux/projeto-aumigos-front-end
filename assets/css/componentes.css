@@ -1,17 +1,20 @@
-/* Navbar principal com submenu dropdown feito com CSS */
+/* ========================================================================= */
+/* COMPONENTES.CSS - ONG Aumigos!                                            */
+/* ========================================================================= */
+
+/* =========================== */
+/* 1. NAVBAR E SUBMENU         */
+/* =========================== */
 header nav {
   position: relative;
 }
 
-/* Lista principal */
 header nav ul {
   display: flex;
   justify-content: center;
-  /* CORREÇÃO: Usando variáveis */
   gap: var(--espaco-24);
   list-style: none;
   padding-left: 0;
-  /* CORREÇÃO: Usando variáveis */
   margin-bottom: var(--espaco-32);
 }
 
@@ -23,14 +26,12 @@ header nav ul li a {
   text-decoration: none;
   color: var(--cor-secundaria);
   font-weight: 600;
-  /* CORREÇÃO: Usando variáveis */
   padding: var(--espaco-8) var(--espaco-16);
   display: inline-block;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
-/* Efeito hover e foco nos links */
 header nav ul li a:hover,
 header nav ul li a:focus {
   background-color: var(--cor-primaria);
@@ -38,10 +39,9 @@ header nav ul li a:focus {
   outline: none;
 }
 
-/* Link ativo na navegação - Centralizado aqui */
 header nav ul li a.active {
   background-color: var(--cor-primaria);
-  color: #fff;
+  color: white;
 }
 
 /* Submenu dropdown */
@@ -69,83 +69,86 @@ header nav ul li ul.submenu li a {
   display: block;
 }
 
-/* Hover e foco submenu */
 header nav ul li ul.submenu li a:hover,
 header nav ul li ul.submenu li a:focus {
   background-color: var(--cor-secundaria);
   color: white;
 }
 
-/* Menu hambúrguer mobile (CSS checkbox hack) */
+/* =========================== */
+/* 2. MENU HAMBURGER MOBILE     */
+/* =========================== */
 .menu-toggle {
   display: none;
-}
-
-.menu-toggle-label {
-  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-secundaria);
   position: absolute;
   top: 18px;
-  right: 20px;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 250;
+  left: 20px; /* botão à esquerda */
+  z-index: 210;
 }
 
-.menu-toggle-label span {
-  display: block;
-  height: 3px;
-  background-color: var(--cor-secundaria);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* Mostrar menu e transformar ícone ao clicar */
-.menu-toggle:checked + .menu-toggle-label + nav ul {
-  display: flex !important;
-}
-
-.menu-toggle:checked + .menu-toggle-label span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle:checked + .menu-toggle-label span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle:checked + .menu-toggle-label span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* CSS mobile */
 @media (max-width: 768px) {
-  header nav ul {
-    display: none !important;
-    flex-direction: column;
+  /* Wrapper do botão e lista para alinhar à esquerda */
+  .menu-wrapper {
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 10px;
+    left: 0; /* canto esquerdo */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* lista alinhada à esquerda */
+    z-index: 210;
+    padding-left: 10px; /* distância mínima da borda */
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    margin-top: 8px; /* espaço entre botão e lista */
+    width: 180px;
+    max-width: 90vw; /* nunca ultrapassa a tela */
     background: var(--cor-fundo);
     border-radius: 10px;
-    padding: 16px;
+    padding: 8px;
+    box-sizing: border-box;
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    width: 180px;
   }
-  header nav ul li ul.submenu {
-    position: static;
-    box-shadow: none;
-    padding-left: 20px;
-    background: none;
-    border-radius: 0;
-  }
-  .menu-toggle-label {
+
+  .nav-list.open {
     display: flex;
+  }
+
+  .nav-list li {
+    width: 100%;
+    text-align: left; /* links alinhados à esquerda */
+    margin: 4px 0;
+  }
+
+  .nav-list li a {
+    display: block;
+    padding: 6px 12px;
+  }
+
+  /* Esconde a navbar desktop */
+  header nav ul {
+    display: none;
   }
 }
 
-/* Botões com estados */
+/* =========================== */
+/* 3. BOTÕES E ESTADOS          */
+/* =========================== */
 button,
 input[type="submit"] {
   background-color: var(--cor-primaria);
@@ -169,7 +172,6 @@ input[type="submit"]:focus {
 
 button:active,
 input[type="submit"]:active {
-  background-color: var(--cor-primaria);
   filter: brightness(0.85);
 }
 
@@ -179,15 +181,20 @@ input[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-/* Validação visual em formulários */
+/* =========================== */
+/* 4. FORM VALIDATION           */
+/* =========================== */
 input:invalid {
-  border-color: #e63946;
+  border-color: var(--cor-error);
 }
+
 input:valid {
   border-color: var(--cor-primaria);
 }
 
-/* Alertas */
+/* =========================== */
+/* 5. ALERTAS E TOASTS          */
+/* =========================== */
 .alert {
   padding: 16px;
   border-radius: 6px;
@@ -197,7 +204,6 @@ input:valid {
   margin-bottom: var(--espaco-24);
 }
 
-/* Toasts */
 .toast {
   position: fixed;
   bottom: var(--espaco-24);
@@ -209,7 +215,9 @@ input:valid {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* Modal com CSS :target */
+/* =========================== */
+/* 6. MODAL                    */
+/* =========================== */
 .modal {
   display: none;
   position: fixed;
@@ -234,7 +242,9 @@ input:valid {
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
-/* Badges e tags estilizadas */
+/* =========================== */
+/* 7. BADGES E TAGS            */
+/* =========================== */
 .badge,
 .tag {
   display: inline-block;

@@ -1,45 +1,64 @@
 /**
- * Script Principal
- * Inicializa todos os módulos da aplicação
+ * main.js
+ * Script principal da ONG Aumigos!
+ * Inicializa SPA, validações, máscaras e menu mobile.
  */
 
-// Aguarda carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🐾 ONG Aumigos - Inicializando aplicação...');
 
-  // Inicializa sistema de templates
-  Templates.init();
-  console.log('✅ Templates carregados');
+  // -----------------------------
+  // Templates
+  // -----------------------------
+  if (typeof Templates !== 'undefined') {
+    Templates.init();
+    console.log('✅ Templates carregados');
+  }
 
-  // CORREÇÃO: Remoção de FormValidator.init(), pois é inicializado pelo SPA.
-  // console.log('✅ Validação de formulários ativa');
+  // -----------------------------
+  // SPA
+  // -----------------------------
+  if (typeof SPA !== 'undefined') {
+    SPA.init();
+    console.log('✅ SPA inicializado');
+  }
 
-  // Inicializa sistema SPA
-  SPA.init();
-  console.log('✅ Sistema SPA inicializado');
+  // -----------------------------
+  // Formulário (somente se existir)
+  // -----------------------------
+  if (typeof FormValidator !== 'undefined') {
+    FormValidator.init();
+    console.log('✅ Validação de formulários ativa');
+  }
 
-  // Máscaras de entrada para campos
+  // -----------------------------
+  // Máscaras de input
+  // -----------------------------
   initInputMasks();
   console.log('✅ Máscaras de entrada configuradas');
 
   console.log('🎉 Aplicação pronta!');
 });
 
-// Função para aplicar máscaras de entrada
+/**
+ * Aplica máscaras em inputs
+ */
 function initInputMasks() {
-  // Máscara de CPF
   document.addEventListener('input', (e) => {
-    if (e.target.matches('[data-validate="cpf"]')) {
-      let value = e.target.value.replace(/\D/g, '');
+    const target = e.target;
+
+    // CPF
+    if (target.matches('[data-validate="cpf"]')) {
+      let value = target.value.replace(/\D/g, '');
       value = value.replace(/(\d{3})(\d)/, '$1.$2');
       value = value.replace(/(\d{3})(\d)/, '$1.$2');
       value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-      e.target.value = value;
+      target.value = value;
     }
 
-    // Máscara de Telefone
-    if (e.target.matches('[data-validate="telefone"]')) {
-      let value = e.target.value.replace(/\D/g, '');
+    // Telefone
+    if (target.matches('[data-validate="telefone"]')) {
+      let value = target.value.replace(/\D/g, '');
       if (value.length <= 10) {
         value = value.replace(/(\d{2})(\d)/, '($1) $2');
         value = value.replace(/(\d{4})(\d)/, '$1-$2');
@@ -47,14 +66,16 @@ function initInputMasks() {
         value = value.replace(/(\d{2})(\d)/, '($1) $2');
         value = value.replace(/(\d{5})(\d)/, '$1-$2');
       }
-      e.target.value = value;
+      target.value = value;
     }
 
-    // Máscara de CEP
-    if (e.target.matches('[data-validate="cep"]')) {
-      let value = e.target.value.replace(/\D/g, '');
+    // CEP
+    if (target.matches('[data-validate="cep"]')) {
+      let value = target.value.replace(/\D/g, '');
       value = value.replace(/(\d{5})(\d)/, '$1-$2');
-      e.target.value = value;
+      target.value = value;
     }
   });
 }
+
+

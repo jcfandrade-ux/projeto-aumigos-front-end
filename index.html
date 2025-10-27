@@ -5,36 +5,41 @@
   <title>ONG Aumigos! | Início</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Conheça a ONG Aumigos!, missão, visão, valores e oportunidades de engajamento.">
+  
+  <!-- Estilos principais -->
   <link rel="stylesheet" href="assets/css/estilo.css">
   <link rel="stylesheet" href="assets/css/componentes.css">
   <link rel="stylesheet" href="assets/css/spa-validation.css">
-
-
 </head>
+
 <body>
   <header>
-    <img src="assets/images/logo-ong-aumigos.png" alt="Logo ONG Aumigos!" width="150">
-    <h1>ONG Aumigos!</h1>
-    
-    <nav class="nav">
-      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-        <ul class="nav-list">
-        <li><a href="#" data-page="index">Início</a></li>
-        <li><a href="#" data-page="projetos">Projetos</a></li>
-        <li><a href="#" data-page="cadastro">Cadastro</a></li>
-        </ul>
-    </nav>
+    <div class="header-container">
+      <img src="assets/images/logo-ong-aumigos.png" alt="Logo ONG Aumigos!" class="logo" width="150">
+      <h1>ONG Aumigos!</h1>
 
+     <!-- Wrapper do menu -->
+  <div class="menu-wrapper">
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <ul class="nav-list">
+      <li><a href="#" data-page="index" class="active">Início</a></li>
+      <li><a href="#" data-page="projetos">Projetos</a></li>
+      <li><a href="#" data-page="cadastro">Cadastro</a></li>
+    </ul>
+  </div>
+
+    </div>
   </header>
 
+  <!-- Conteúdo dinâmico da SPA -->
   <main id="app-content">
     <section>
       <h2>Missão</h2>
-      <p>Promover o bem-estar integral de animais e pessoas, fortalecendo vínculos de empatia e solidariedade por meio de projetos sociais inovadores, inclusivos e sustentáveis, que transformam vidas e comunidades.</p>
-      
+      <p>Promover o bem-estar integral de animais e pessoas, fortalecendo vínculos de empatia e solidariedade por meio de projetos sociais inovadores, inclusivos e sustentáveis.</p>
+
       <h2>Visão</h2>
-      <p>Tornar-se a principal referência nacional em proteção animal e transformação social, promovendo educação sustentável e engajamento comunitário que inspirem mudanças duradouras no respeito à vida.</p>
-      
+      <p>Tornar-se a principal referência nacional em proteção animal e transformação social, promovendo educação sustentável e engajamento comunitário.</p>
+
       <h2>Valores</h2>
       <ul>
         <li>Transparência</li>
@@ -42,17 +47,17 @@
         <li>Solidariedade</li>
         <li>Respeito à vida</li>
       </ul>
-      
+
       <h2>Nossa Equipe</h2>
       <img src="assets/images/equipe.jpg" alt="Equipe da ONG Aumigos!" width="400">
     </section>
-    
+
     <section>
       <h2>Contato</h2>
       <ul>
-        <li>Telefone: (15) 99123-9952</li>
-        <li>E-mail: contato@ongaumigos.org</li>
-        <li>Endereço: Rua Rafaela Camargo, 123, Centro — Votorantim/SP</li>
+        <li>📞 Telefone: (15) 99123-9952</li>
+        <li>📧 E-mail: contato@ongaumigos.org</li>
+        <li>📍 Endereço: Rua Rafaela Camargo, 123, Centro — Votorantim/SP</li>
       </ul>
     </section>
   </main>
@@ -61,10 +66,10 @@
     <p>&copy; 2025 ONG Aumigos!</p>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- Scripts principais (ordem importa) -->
+  <script src="assets/js/templates.js"></script>
   <script src="assets/js/spa.js"></script>
   <script src="assets/js/form-validation.js"></script>
-  <script src="assets/js/templates.js"></script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
